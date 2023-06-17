@@ -349,7 +349,7 @@ local args = {
 workspace:WaitForChild("UserData"):WaitForChild("User_1994812622"):WaitForChild("ChallengesRemote"):FireServer(unpack(args))
 wait()
 workspace:WaitForChild("UserData"):WaitForChild("User_1994812622"):WaitForChild("Stats"):FireServer()
-wait(0.5)
+wait(1)
 			end
 		end
 	end
