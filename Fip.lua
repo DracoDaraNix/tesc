@@ -652,7 +652,9 @@ local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteE
 
         if toggle1Tab5 then
             while toggle1Tab5 do
-            wait(0.3)
+            wait()
+			for xd = 1,50 do
+			wait(0.3)
 			for az = 1,86 do
 wait(0.001)
 local args = {
@@ -663,6 +665,7 @@ local args = {
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
+end
 end
             end
             
