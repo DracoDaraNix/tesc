@@ -654,8 +654,8 @@ local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteE
             while toggle1Tab5 do
             wait()
 			for xd = 1,50 do
-			wait(0.3)
-			for az = 1,86 do
+			wait()
+			for az = 1,99 do
 wait(0.001)
 local args = {
     [1] = pro,
