@@ -614,3 +614,59 @@ local Dropdown1Tab3 = Tab4:AddDropdown({
         end
     end    
 })
+
+------------------------------[ Tab 5 ]------------------------------
+
+
+local Tab5 = Window:MakeTab({ Name = "Auto Stats", Icon = "rbxassetid://4483345998", PremiumOnly = false })
+local Section1Tab5 = Tab5:AddSection({
+	Name = "Farm Defense :"
+})
+Tab5:AddButton({
+	Name = "Methode 1 Button : ",
+	Callback = function()
+
+local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent.RemoteFunction:InvokeServer()
+
+for az = 1,86 do
+wait(0.001)
+local args = {
+    [1] = pro,
+    [2] = "SpinPower9",
+    [3] = "Off",
+    [4] = game:GetService("Players"):WaitForChild("DragonSmelt9").Character:FindFirstChild("Left Arm")
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
+end
+  	end    
+})
+local toggle1Tab5 = false
+
+Tab5:AddToggle({
+    Name = "Methode 2 Button : ",
+    Default = false,
+    Callback = function(value)
+        toggle1Tab5 = value
+local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent.RemoteFunction:InvokeServer()
+
+        if toggle1Tab5 then
+            while toggle1Tab5 do
+            wait(0.3)
+			for az = 1,86 do
+wait(0.001)
+local args = {
+    [1] = pro,
+    [2] = "SpinPower9",
+    [3] = "Off",
+    [4] = game:GetService("Players"):WaitForChild("DragonSmelt9").Character:FindFirstChild("Left Arm")
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
+end
+            end
+            
+        else
+        end
+    end
+})
