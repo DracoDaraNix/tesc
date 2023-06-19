@@ -126,6 +126,82 @@ local Button4Tab1 = Tab1:AddButton({
 local Section2Tab1 = Tab1:AddSection({
 	Name = "Auto Farm"
 })
+
+Tab1:AddButton({
+	Name = "dd",
+	Callback = function()
+      		local CharacterName = game.Players.LocalPlayer.Character
+    local position = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15)
+    local char = game.Players.LocalPlayer.Character.HumanoidRootPart
+    char.CFrame = CFrame.new(-169, 5010, -54)
+
+    local b1 = Instance.new("Part")
+    b1.Shape = "Block"
+    b1.Material = "Plastic"
+    b1.BrickColor = BrickColor.new("Hot Pink")
+    b1.Anchored = true
+    b1.Parent = game.Workspace
+    b1.CFrame = CFrame.new(-169, 5000, -54)
+    b1.Size = Vector3.new(50, 0.1, 50)
+  	end    
+})
+
+Tab1:AddButton({
+	Name = "teleport Part Light",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 5005, -54)
+
+  	end    
+})
+
+local toggle0Tab1 = false
+
+local dsi = Tab1:AddToggle({
+    Name = "AutoFarm light",
+    Default = false,
+    Callback = function(value)
+        toggle0Tab1 = value
+        
+        if toggle0Tab1 then
+            while toggle0Tab1 do
+            wait(0.5)
+				_G.Light = true
+local pro = game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent.RemoteFunction:InvokeServer()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 5010, -54)
+    wait(0.5)
+    local args = {
+    [1] = pro,
+    [2] = "LightPower8",
+    [3] = "StartCharging",
+    [4] = game.Players.LocalPlayer.Character.Torso.CFrame,
+    [5] = workspace.IslandWindmill.Path,
+    [6] = 100 }
+game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
+
+while _G.Light do
+for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+  if v:IsA("Model") then 
+    local args = {
+    [1] = pro,
+    [2] = "LightPower8",
+    [3] = "StopCharging",
+    [4] = workspace.Enemies:FindFirstChild(v.name).Torso.CFrame,
+    [5] = workspace.IslandWindmill.Path,
+    [6] = 100 } 
+game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+wait(0.00000000000000000000000000000000000000000000000000000000001)
+end
+end
+end
+            end
+            
+        else
+		 _G.Light = false
+        end
+    end
+})
+
 local toggle1Tab1 = false
 
 Tab1:AddToggle({
