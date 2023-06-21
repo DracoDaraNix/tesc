@@ -1,20 +1,120 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({ Name = "ert178Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "Dara" })
 
-------------------------------[ Tab 1 ]------------------------------
-local Tab1 = Window:MakeTab({ Name = "AutoFarm", Icon = "rbxassetid://4483345998", PremiumOnly = false })
+------------------------------[ WhiteList ]------------------------------
+_G.RandomTrue = false
+_G.MemberTrue = false
+_G.FriendTrue = false
+_G.DevTrue = false
+local playersToFindMember = {
+    {pseudoMember = "abc", userID = 123},
+}
 
-local MyPart = Instance.new("Part")
-MyPart.Name = "MyPart"
-MyPart.Size = Vector3.new(50, 10, 50)
-MyPart.Position = Vector3.new(88888, 500, 88888)
-MyPart.Anchored = true
-MyPart.Parent = workspace
+local function checkPlayersInGameMember()
+    for _, playerMember in ipairs(game.Players:GetPlayers()) do
+        for _, playerInfoMember in ipairs(playersToFindMember) do
+            if playerMember.UserId == playerInfoMember.userID and playerMember.Name == playerInfoMember.pseudoMember then
+                _G.MemberTrue = true
+                break
+            end
+        end
+    end
+end
+checkPlayersInGameMember()
+game.Players.PlayerAdded:Connect(checkPlayersInGameMember)
+wait()
+local playersToFindVip = {
+    {pseudoVip = "abc", userID = 123},
+}
+local function checkPlayersInGameVip()
+    for _, playerMember in ipairs(game.Players:GetPlayers()) do
+        for _, playerInfoMember in ipairs(playersToFindVip) do
+            if playerMember.UserId == playerInfoMember.userID and playerMember.Name == playerInfoMember.pseudoVip then
+                _G.FriendTrue = true
+                break
+            end
+        end
+    end
+end
+checkPlayersInGameVip()
+game.Players.PlayerAdded:Connect(checkPlayersInGameVip)
+wait()
+local playersToFindDev = {
+    {playerDev = "SpeedNid", userID = 3559874201},
+}
+local function checkPlayersInGameDev()
+    for _, playerDev in ipairs(game.Players:GetPlayers()) do
+        for _, playerInfoMember in ipairs(playersToFindDev) do
+            if playerDev.UserId == playerInfoMember.userID and playerDev.Name == playerInfoMember.playerDev then
+                _G.DevTrue = true
+                break
+            end
+        end
+    end
+end
+checkPlayersInGameDev()
+game.Players.PlayerAdded:Connect(checkPlayersInGameDev)
+wait(0.2)
+if not _G.MemberTrue and not _G.FriendTrue and not _G.DevTrue then
+_G.RandomTrue = true
+print("POOR")
+end
 
-local Section1Tab1 = Tab1:AddSection({
+local fd 
+
+if _G.MemberTrue then
+    fd = "[Version : Member]"
+elseif _G.FriendTrue then
+    fd = "[Version : Friend]"
+elseif _G.DevTrue then
+    fd = "[Version : Dev]"
+end
+
+local Window = OrionLib:MakeWindow({ Name = "FateHub " .. fd, HidePremium = false, SaveConfig = true, ConfigFolder = "Dara" })
+
+
+------------------------------[ Parts ]------------------------------
+
+
+if _G.DevTrue or _G.FriendTrue then
+local FishFarmPart = workspace:FindFirstChild("FishFarm")
+if not FishFarmPart then
+    FishFarmPart = Instance.new("Part")
+    FishFarmPart.Name = "FishFarm"
+    FishFarmPart.Size = Vector3.new(100000000000, 10, 1000000000000)
+    FishFarmPart.Position = Vector3.new(90000, 205.598388671875, 90000)
+    FishFarmPart.Anchored = true
+    FishFarmPart.Parent = workspace
+end
+local Spawn11 = workspace.Spawns:FindFirstChild("Spawn11")
+if not Spawn11 then
+    Spawn11 = Instance.new("Part")
+    Spawn11.Name = "Spawn11"
+    Spawn11.Size = Vector3.new(2, 1, 2)
+    Spawn11.Position = Vector3.new(90000, 215, 90000)
+    Spawn11.Anchored = true
+    Spawn11.Parent = workspace.Spawns
+    Spawn11.CanCollide = false
+    Spawn11.Transparency = 1
+end
+local MyPart = workspace:FindFirstChild("MyPart")
+if not MyPart then
+	MyPart = Instance.new("Part")
+    MyPart.Name = "MyPart"
+    MyPart.Size = Vector3.new(50, 10, 50)
+    MyPart.Position = Vector3.new(88888, 500, 88888)
+    MyPart.Anchored = true
+    MyPart.Parent = workspace
+end
+end
+
+------------------------------[ Tab AutoFarm Accounts ]------------------------------
+
+
+local TabFarmAccount = Window:MakeTab({ Name = "Farm Account", Icon = "rbxassetid://7733919783", PremiumOnly = false })
+local Section1TabFarmAccount = TabFarmAccount:AddSection({
 	Name = "Spawn"
 })
-local Button1Tab1 = Tab1:AddButton({
+local Button1TabFarmAccount = TabFarmAccount:AddButton({
 	Name = "Original Set Spawn ",
 	Callback = function()
       		local PositionSpawn1 = {}
@@ -53,7 +153,7 @@ spawn10a.Position = PositionSpawn1[10]
   	end    
 })
 
-local Button2Tab1 = Tab1:AddButton({
+local Button2TabFarmAccount = TabFarmAccount:AddButton({
 	Name = "Safe Zone",
 	Callback = function()
       		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(88888, 504, 88888)
@@ -61,7 +161,7 @@ local Button2Tab1 = Tab1:AddButton({
   	end    
 })
 
-local Button3Tab1 = Tab1:AddButton({
+local Button3TabFarmAccount = TabFarmAccount:AddButton({
 	Name = "Set Spawn Safe Zone ",
 	Callback = function()
       		local PositionSpawn2 = {}
@@ -99,11 +199,11 @@ local spawn10a = game.Workspace.Spawns.Spawn10
 spawn10a.Position = PositionSpawn2[10]
   	end    
 })
-local Button4Tab1 = Tab1:AddButton({
+local Button4TabFarmAccount = TabFarmAccount:AddButton({
 	Name = "Set Spawn My Position",
 	Callback = function()
-		local player = game.Players.LocalPlayer
-		local character = player.Character
+		local plr = game.Players.LocalPlayer
+		local character = plr.Character
 		local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 		local spawnPositions = {}
 		spawnPositions[1] = game.Workspace.Spawns.Spawn1
@@ -122,13 +222,97 @@ local Button4Tab1 = Tab1:AddButton({
 		end
 	end
 })
+local Section2TabFarmAccount = TabFarmAccount:AddSection({
+	Name = "Self Farm"
+})
 
-local Section2Tab1 = Tab1:AddSection({
+local Button4TabFarmAccount = false
+local ToggleTabFarmAccount = TabFarmAccount:AddToggle({
+    Name = "Auto Respawn",
+    Default = false,
+    Callback = function(value)
+        Button4TabFarmAccount = value
+        
+        if Button4TabFarmAccount then
+            while Button4TabFarmAccount do
+            wait(0.5)
+              pcall(function()
+            if not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible then return end;
+            wait(3);
+            firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click);
+            repeat wait() until not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible;
+            wait(3);
+            repeat
+                wait(0.1);
+            until game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible;
+        end)
+            end
+            
+        else
+        end
+    end
+})
+local Button5TabFarmAccount = false
+
+TabFarmAccount:AddToggle({
+	Name = "Auto Respawn + Reset",
+	Default = false,
+	Callback = function(Value)
+		Button5TabFarmAccount = Value
+		if Button5TabFarmAccount then
+			while Button5TabFarmAccount do
+			wait()
+
+	if not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+wait()
+
+else
+wait(3)
+firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)
+wait(5)
+game.Players.LocalPlayer.Character:BreakJoints()
+wait(7)
+end
+	end
+	end
+	end
+})
+
+local Button6TabAutoFarm = TabFarmAccount:AddButton({
+	Name = "Reset Player",
+	Callback = function()
+      		game.Players.LocalPlayer.Character:BreakJoints()
+  	end    
+})
+
+------------------------------[ Tab AutoFarm ]------------------------------
+
+local TabAutoFarm = Window:MakeTab({ Name = "AutoFarm", Icon = "rbxassetid://7734058599", PremiumOnly = false })
+local Section1TabAutoFarm = TabAutoFarm:AddSection({
 	Name = "Auto Farm"
 })
 
-Tab1:AddButton({
-	Name = "dd",
+
+
+
+local Section2TabAutoFarm = TabAutoFarm:AddSection({
+	Name = "Auto Haki"
+})
+
+
+------------------------------[ Tab AutoFarm Fruit ]------------------------------
+
+
+if _G.DevTrue then
+local TabAutoFarmFruit = Window:MakeTab({
+	Name = "AutoFarm Fruit",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+TabAutoFarmFruit:AddButton({
+	Name = "Teleport Zone Farm Air",
 	Callback = function()
       		local CharacterName = game.Players.LocalPlayer.Character
     local position = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15)
@@ -146,7 +330,7 @@ Tab1:AddButton({
   	end    
 })
 
-Tab1:AddButton({
+TabAutoFarmFruit:AddButton({
 	Name = "teleport Part Light",
 	Callback = function()
       		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 5005, -54)
@@ -154,16 +338,16 @@ Tab1:AddButton({
   	end    
 })
 
-local toggle0Tab1 = false
+local toggle1TabAutoFarmFruit = false
 
-local dsi = Tab1:AddToggle({
+local dsi = TabAutoFarmFruit:AddToggle({
     Name = "AutoFarm light",
     Default = false,
     Callback = function(value)
-        toggle0Tab1 = value
+        toggle1TabAutoFarmFruit = value
         
-        if toggle0Tab1 then
-            while toggle0Tab1 do
+        if toggle1TabAutoFarmFruit then
+            while toggle1TabAutoFarmFruit do
             wait(0.5)
 				_G.Light = true
 local pro = game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent.RemoteFunction:InvokeServer()
@@ -201,79 +385,26 @@ end
         end
     end
 })
-
-local toggle1Tab1 = false
-
-Tab1:AddToggle({
-    Name = "Auto Respawn",
-    Default = false,
-    Callback = function(value)
-        toggle1Tab1 = value
-        
-        if toggle1Tab1 then
-            while toggle1Tab1 do
-            wait(0.5)
-              pcall(function()
-            if not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible then return end;
-            wait(3);
-            firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click);
-            repeat wait() until not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible;
-            wait(3);
-            repeat
-                wait(0.1);
-            until game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible;
-        end)
-            end
-            
-        else
-        end
-    end
-})
-local toggle1Tab1 = false
-
-Tab1:AddToggle({
-	Name = "Auto Respawn + Reset",
-	Default = false,
-	Callback = function(Value)
-		toggle1Tab1 = Value
-		if toggle1Tab1 then
-			while toggle1Tab1 do
-			wait()
-
-	if not game.Players.LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-wait()
-
-else
-wait(3)
-firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)
-wait(5)
-game.Players.LocalPlayer.Character:BreakJoints()
-wait(7)
 end
-	end
-	end
-	end
-})
 
-local Button4Tab1 = Tab1:AddButton({
-	Name = "Reset Player",
-	Callback = function()
-      		game.Players.LocalPlayer.Character:BreakJoints()
-  	end    
-})
 
-local Section2Tab1 = Tab1:AddSection({
+------------------------------[ Tab Compass ]------------------------------
+
+
+local TabCompass = Window:MakeTab({ Name = "Compass", Icon = "rbxassetid://7733924216", PremiumOnly = false })
+
+local Section1TabCompass = TabCompass:AddSection({
 	Name = "Auto Compass"
 })
-local toggle2Tab1 = false
+local toggle1TabCompass = false
 
-Tab1:AddToggle({
+TabCompass:AddToggle({
 	Name = "Auto Get Compass",
 	Default = false,
 	Callback = function(Value)
-		toggle2Tab1 = Value
-		if toggle2Tab1 then
-			while toggle2Tab1 do
+		toggle1TabCompass = Value
+		if toggle1TabCompass then
+			while toggle1TabCompass do
 			wait(0.1)
 				local UserID = tostring(game.Players.LocalPlayer.UserId)
 local actuelCompass1 = game.workspace.UserData["User_"..UserID].Data.CompassTokens.Value
@@ -292,16 +423,16 @@ wait(1)
 	end
 })
 
-local toggle2Tab1 = false
+local toggle2TabCompass = false
 
-Tab1:AddToggle({
+TabCompass:AddToggle({
     Name = "Auto Teleport Compass",
     Default = false,
     Callback = function(value)
-        toggle2Tab1 = value
+        toggle2TabCompass = value
         
-        if toggle2Tab1 then
-            while toggle2Tab1 do
+        if toggle2TabCompass then
+            while toggle2TabCompass do
             wait(0.5)
         pcall(function()
             local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
@@ -324,15 +455,15 @@ Tab1:AddToggle({
     end
 })
 
-local toggle3Tab1 = false
+local toggle3TabCompass = false
 
-Tab1:AddToggle({
-	Name = "Grab Compass and Safe",
+TabCompass:AddToggle({
+	Name = "Grab Compass",
 	Default = false,
 	Callback = function(Value)
-		toggle3Tab1 = Value
-		if toggle3Tab1 then
-			while toggle3Tab1 do
+		toggle3TabCompass = Value
+		if toggle3TabCompass then
+			while toggle3TabCompass do
 			wait(0.1)
             for _, Item in pairs(game.Workspace:GetChildren()) do
                 if Item.Name == "Compass" and Item:FindFirstChild("Handle") then
@@ -344,16 +475,11 @@ Tab1:AddToggle({
 		end
 	end
 })
+------------------------------[ Tab Dupe ]------------------------------
 
-local Section3Tab1 = Tab1:AddSection({
-	Name = "Auto Haki"
-})
+local TabDupe = Window:MakeTab({ Name = "Dupe", Icon = "rbxassetid://7733765045", PremiumOnly = false })
 
-------------------------------[ Tab 2 ]------------------------------
-
-local Tab2 = Window:MakeTab({ Name = "Dupe", Icon = "rbxassetid://4483345998", PremiumOnly = false })
-
-local Button1Tab2 = Tab2:AddButton({
+local Button1TabDupe = TabDupe:AddButton({
 	Name = "Expertise compass",
 	Callback = function()
       		for q = 1,5 do
@@ -385,48 +511,15 @@ workspace:WaitForChild("UserData"):WaitForChild("User_1994812622"):WaitForChild(
   	end    
 })
 
-local Button2Tab2 = Tab2:AddButton({
+local Button2TabDupe = TabDupe:AddButton({
 	Name = "Teleport Zone Compass",
 	Callback = function()
       		game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1267.76355, 412.999908, 11084.3154))
 
   	end    
 })
-local toggle2Tab1 = false
 
-local Toggle1Tab2 = Tab2:AddToggle({
-    Name = "WebhookCompass",
-    Default = false,
-    Callback = function(value)
-        toggle2Tab1 = value
-        
-        if toggle2Tab1 then
-            while toggle2Tab1 do
-            wait(0.5)
-        pcall(function()
-            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
-            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
-            if Compass or Compass2 then
-                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
-                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                Compass.Parent = game.Players.LocalPlayer.Character;
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
-                Compass:Activate();
-                wait(1);
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
-            end
-        end)
-
-            end
-            
-        else
-        end
-    end
-})
-
-
-
-local Button1Tab2 = Tab2:AddButton({
+local Button3TabDupe = TabDupe:AddButton({
 	Name = "Rejoin",
 	Callback = function()
       		game.Players.LocalPlayer:Kick()
@@ -436,29 +529,28 @@ local Button1Tab2 = Tab2:AddButton({
 })
 
 
+------------------------------[ Tab InfoPlayers ]------------------------------
 
 
-------------------------------[ Tab 3 ]------------------------------
-
-local Tab3 = Window:MakeTab({ Name = "Info Players", Icon = "rbxassetid://4483345998", PremiumOnly = false })
-local Section1Tab2 = Tab3:AddSection({
+local TabInfoPlayers = Window:MakeTab({ Name = "Info Players", Icon = "rbxassetid://7733774602", PremiumOnly = false })
+local Section1TabInfoPlayers = TabInfoPlayers:AddSection({
 	Name = "Information Players"
 })
 
-local TotalLevelLabel = Tab3:AddLabel("TotalLevel : ")
-local DefenseLabel = Tab3:AddLabel("Defense : ")
-local MeleeLabel = Tab3:AddLabel("Melee : ")
-local SwordLabel = Tab3:AddLabel("Sword : ")
-local SniperLabel = Tab3:AddLabel("Sniper : ")
-local HakiLabel = Tab3:AddLabel("Haki : ")
-local BountyLabel = Tab3:AddLabel("Bounty : ")
-local CompassLabel = Tab3:AddLabel("Compass : ")
-local CashLabel = Tab3:AddLabel("Cash : ")
-local GemsLabel = Tab3:AddLabel("Gems : ")
-local ComboLabel = Tab3:AddLabel("Combo : ")
-local LabelSelectPlayer = Tab3:AddLabel("ID du joueur sélectionné : ")
+local TotalLevelLabel = TabInfoPlayers:AddLabel("TotalLevel : ")
+local DefenseLabel = TabInfoPlayers:AddLabel("Defense : ")
+local MeleeLabel = TabInfoPlayers:AddLabel("Melee : ")
+local SwordLabel = TabInfoPlayers:AddLabel("Sword : ")
+local SniperLabel = TabInfoPlayers:AddLabel("Sniper : ")
+local HakiLabel = TabInfoPlayers:AddLabel("Haki : ")
+local BountyLabel = TabInfoPlayers:AddLabel("Bounty : ")
+local CompassLabel = TabInfoPlayers:AddLabel("Compass : ")
+local CashLabel = TabInfoPlayers:AddLabel("Cash : ")
+local GemsLabel = TabInfoPlayers:AddLabel("Gems : ")
+local ComboLabel = TabInfoPlayers:AddLabel("Combo : ")
+local LabelSelectPlayer = TabInfoPlayers:AddLabel("ID du joueur sélectionné : ")
 
-local Dropdown1Tab2 = Tab3:AddDropdown({
+local Dropdown1TabInfoPlayers = TabInfoPlayers:AddDropdown({
     Name = "Select Player :",
     Default = "1",
     Options = {},
@@ -517,7 +609,7 @@ local function RefreshDropdown()
     for _, player in ipairs(players) do
         table.insert(playerNames, player.Name)
     end
-    Dropdown1Tab2:Refresh(playerNames, true)
+    Dropdown1TabInfoPlayers:Refresh(playerNames, true)
 end
 
 game.Players.PlayerAdded:Connect(RefreshDropdown)
@@ -528,7 +620,7 @@ local function UpdateLabels()
     while true do
         wait(1)
         
-        local selectedPlayer = game.Players:FindFirstChild(Dropdown1Tab2:GetValue())
+        local selectedPlayer = game.Players:FindFirstChild(Dropdown1TabInfoPlayers:GetValue())
         if selectedPlayer then
             local userId = selectedPlayer.UserId
             local statPaths = {
@@ -576,17 +668,16 @@ local function UpdateLabels()
     end
 end
 
-spawn(UpdateLabels) -- Démarrer la mise à jour automatique des labels
+spawn(UpdateLabels)
 
-------------------------------[ Tab 4 ]------------------------------
+------------------------------[ Tab Teleport ]------------------------------
 
 
-local Tab4 = Window:MakeTab({ Name = "Teleport", Icon = "rbxassetid://4483345998", PremiumOnly = false })
-local Section1Tab3 = Tab4:AddSection({
+local TabTeleport = Window:MakeTab({ Name = "Teleport", Icon = "rbxassetid://7743869517", PremiumOnly = false })
+local Section1TabTeleport = TabTeleport:AddSection({
 	Name = "Teleport"
 })
 
--- Remplacez ces coordonnées par les coordonnées des endroits où vous souhaitez téléporter le joueur
 local teleportLocations = {
     ["Exertise Island"] = Vector3.new(719.9999389648438, 241.199951171875, 1191.7999267578125),
     ["Discotheque"] = Vector3.new(1525.9610595703125, 260.3863220214844, 2159.467041015625),
@@ -603,7 +694,7 @@ local teleportLocations = {
 	["The Pursuer Island"] = Vector3.new(4854.68017578125, 569.9998779296875, -7127.43212890625)
 }
 
-local Dropdown1Tab3 = Tab4:AddDropdown({
+local Dropdown1TabTeleport = TabTeleport:AddDropdown({
     Name = "Select Island :",
     Default = "None",
     Options = {"None", "Exertise Island", "Discotheque", "Krizma Island", "Bunker Island", "little Snow Island", "Piramide Island", "Volkun Island", "Big Tree Island", "Marine Ford", "Purple Island", "Big Snow Island", "Sand Village Island", "The Pursuer Island"},
@@ -615,47 +706,46 @@ local Dropdown1Tab3 = Tab4:AddDropdown({
     end    
 })
 
+
 ------------------------------[ Tab 5 ]------------------------------
 
 
-local Tab5 = Window:MakeTab({ Name = "Auto Stats", Icon = "rbxassetid://4483345998", PremiumOnly = false })
-local Section1Tab5 = Tab5:AddSection({
+local TabTeleport = Window:MakeTab({ Name = "Auto Stats", Icon = "rbxassetid://4483345998", PremiumOnly = false })
+local Section1TabTeleport = TabTeleport:AddSection({
 	Name = "Farm Defense :"
 })
-Tab5:AddButton({
+TabTeleport:AddButton({
 	Name = "Methode 1 Button : ",
 	Callback = function()
 
-local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent.RemoteFunction:InvokeServer()
+local pro1 = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent.RemoteFunction:InvokeServer()
 
 for az = 1,86 do
 wait(0.001)
 local args = {
-    [1] = pro,
+    [1] = pro1,
     [2] = "SpinPower9",
     [3] = "Off",
-    [4] = game:GetService("Players"):WaitForChild("DragonSmelt9").Character:FindFirstChild("Left Arm")
+    [4] = game:GetService("Players"):WaitForChild("anhlavip123088").Character:FindFirstChild("Left Arm")
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
 end
   	end    
 })
-local toggle1Tab5 = false
+local toggle1TabTeleport = false
 
-Tab5:AddToggle({
-    Name = "Methode 2 Button : ",
+TabTeleport:AddToggle({
+    Name = "Auto Respawn",
     Default = false,
     Callback = function(value)
-        toggle1Tab5 = value
+        toggle1TabTeleport = value
 local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent.RemoteFunction:InvokeServer()
 
-        if toggle1Tab5 then
-            while toggle1Tab5 do
-            wait()
-			for xd = 1,50 do
-			wait()
-			for az = 1,99 do
+        if toggle1TabTeleport then
+            while toggle1TabTeleport do
+            wait(0.3)
+			for az = 1,86 do
 wait(0.001)
 local args = {
     [1] = pro,
@@ -665,7 +755,6 @@ local args = {
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
-end
 end
             end
             
