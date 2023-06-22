@@ -291,7 +291,45 @@ local TabAutoFarm = Window:MakeTab({ Name = "AutoFarm", Icon = "rbxassetid://773
 local Section1TabAutoFarm = TabAutoFarm:AddSection({
 	Name = "Auto Farm"
 })
+local toggle1TabCompass = false
 
+local Toggle1TabCompassd = TabAutoFarm:AddToggle({
+	Name = "Auto Fish",
+	Default = false,
+	Callback = function(Value)
+		toggle1TabCompass = Value
+		if toggle1TabCompass then
+			while toggle1TabCompass do
+			wait(0.1)
+			local Pl = game:GetService("Players")
+local Lp = Pl.LocalPlayer
+local woodRod = game.Workspace:FindFirstChild(Lp.Name):FindFirstChild("Wood Rod")
+local caughtValue = woodRod.Caught.Value
+
+if caughtValue then
+   local args = {
+    [1] = Vector3.new(-1765.5, 193.91355895996094, -287.21783447265625)
+}
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Wood Rod").Click:FireServer(unpack(args))
+wait(1)
+local args = {
+    [1] = Vector3.new(-1765.5, 193.91355895996094, -287.21783447265625)
+}
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Wood Rod").Click:FireServer(unpack(args))
+
+					end
+			end
+		end
+	end
+})
+local Button1TabAutoFarm = TabAutoFarm:AddButton({
+	Name = "Teleport Safe Farm Fishing",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90000, 215.598388671875, 90000)
+  	end    
+})
 
 
 
@@ -390,7 +428,7 @@ end
 
 ------------------------------[ Tab Compass ]------------------------------
 
-
+if _G.DevTrue or _G.FriendTrue then
 local TabCompass = Window:MakeTab({ Name = "Compass", Icon = "rbxassetid://7733924216", PremiumOnly = false })
 
 local Section1TabCompass = TabCompass:AddSection({
@@ -475,8 +513,12 @@ TabCompass:AddToggle({
 		end
 	end
 })
+end
+
+
 ------------------------------[ Tab Dupe ]------------------------------
 
+if _G.DevTrue then
 local TabDupe = Window:MakeTab({ Name = "Dupe", Icon = "rbxassetid://7733765045", PremiumOnly = false })
 
 local Button1TabDupe = TabDupe:AddButton({
@@ -527,11 +569,12 @@ local Button3TabDupe = TabDupe:AddButton({
 
   	end    
 })
+end
 
 
 ------------------------------[ Tab InfoPlayers ]------------------------------
 
-
+if _G.DevTrue or _G.FriendTrue then
 local TabInfoPlayers = Window:MakeTab({ Name = "Info Players", Icon = "rbxassetid://7733774602", PremiumOnly = false })
 local Section1TabInfoPlayers = TabInfoPlayers:AddSection({
 	Name = "Information Players"
@@ -669,20 +712,26 @@ local function UpdateLabels()
 end
 
 spawn(UpdateLabels)
+end
+
 
 ------------------------------[ Tab Teleport ]------------------------------
 
-
-local TabTeleport = Window:MakeTab({ Name = "Teleport", Icon = "rbxassetid://7743869517", PremiumOnly = false })
-local Section1TabTeleport = TabTeleport:AddSection({
+if _G.DevTrue or _G.FriendTrue then
+local TabFarmStat = Window:MakeTab({ Name = "Teleport", Icon = "rbxassetid://7743869517", PremiumOnly = false })
+local Section1TabFarmStat = TabFarmStat:AddSection({
 	Name = "Teleport"
 })
 
 local teleportLocations = {
+	["Sam Island"] = Vector3.new(-1289.7191162109375, 217.9999542236328, -1348.867919921875),
+	["Merlin Island"] = Vector3.new(-1698.230224609375, 215.9999542236328, -330.4914855957031),
+	["Cave Spawn"] = Vector3.new(25.667943954467773, 309, -883.7334594726562),
     ["Exertise Island"] = Vector3.new(719.9999389648438, 241.199951171875, 1191.7999267578125),
     ["Discotheque"] = Vector3.new(1525.9610595703125, 260.3863220214844, 2159.467041015625),
     ["Krizma Island"] = Vector3.new(-1074.91552734375, 360.99993896484375, 1671.341064453125),
     ["Bunker Island"] = Vector3.new(-2613.5634765625, 253.699951171875, 1087.3468017578125),
+	["Fish Seller Island"] = Vector3.new(1985.571044921875, 217.99996948242188, 568.431396484375),
     ["little Snow Island"] = Vector3.new(-1894.9674072265625, 224.9999542236328, 3295.679931640625),
     ["Piramide Island"] = Vector3.new(118.25274658203125, 309.9999084472656, 4946.53955078125),
 	["Volkun Island"] = Vector3.new(4571.42578125, 217.39987182617188, 5141.9521484375),
@@ -692,12 +741,13 @@ local teleportLocations = {
 	["Big Snow Island"] = Vector3.new(6641.22119140625, 417.9989013671875, -1468.1353759765625),
 	["Sand Village Island"] = Vector3.new(1079.057861328125, 245.2000732421875, -3335.053466796875),
 	["The Pursuer Island"] = Vector3.new(4854.68017578125, 569.9998779296875, -7127.43212890625)
+	
 }
 
-local Dropdown1TabTeleport = TabTeleport:AddDropdown({
+local Dropdown1TabTeleport = TabFarmStat:AddDropdown({
     Name = "Select Island :",
     Default = "None",
-    Options = {"None", "Exertise Island", "Discotheque", "Krizma Island", "Bunker Island", "little Snow Island", "Piramide Island", "Volkun Island", "Big Tree Island", "Marine Ford", "Purple Island", "Big Snow Island", "Sand Village Island", "The Pursuer Island"},
+    Options = {"None", "Sam Island","Merlin Island", "Exertise Island","Cave Spawn", "Discotheque","Fish Seller Island", "Krizma Island", "Bunker Island", "little Snow Island", "Piramide Island", "Volkun Island", "Big Tree Island", "Marine Ford", "Purple Island", "Big Snow Island", "Sand Village Island", "The Pursuer Island"},
     Callback = function(TeleportValue)
         local selectedLocation = teleportLocations[TeleportValue]
         if selectedLocation then
@@ -706,15 +756,36 @@ local Dropdown1TabTeleport = TabTeleport:AddDropdown({
     end    
 })
 
+local Button1TabFarmStat = TabFarmStat:AddButton({
+	Name = "Expetise Gui",
+	Callback = function()
+      		for i,v in pairs(game:GetService("Workspace").Merchants.ExpertiseMerchant:GetDescendants()) do
+if v:IsA("ClickDetector") then
+fireclickdetector(v)
+end
+end
+  	end    
+})
+local Button2TabFarmStat = TabFarmStat:AddButton({
+	Name = "Affinity Gui",
+	Callback = function()
+      		for i,v in pairs(game:GetService("Workspace").Merchants.AffinityMerchant:GetDescendants()) do
+if v:IsA("ClickDetector") then
+fireclickdetector(v)
+end
+end
+  	end    
+})
+end
 
-------------------------------[ Tab 5 ]------------------------------
+------------------------------[ Tab FarmStat ]------------------------------
 
-
-local TabTeleport = Window:MakeTab({ Name = "Auto Stats", Icon = "rbxassetid://4483345998", PremiumOnly = false })
-local Section1TabTeleport = TabTeleport:AddSection({
+if _G.DevTrue then
+local TabFarmStat = Window:MakeTab({ Name = "Auto Stats", Icon = "rbxassetid://4483345998", PremiumOnly = false })
+local Section1TabFarmStat = TabFarmStat:AddSection({
 	Name = "Farm Defense :"
 })
-TabTeleport:AddButton({
+TabFarmStat:AddButton({
 	Name = "Methode 1 Button : ",
 	Callback = function()
 
@@ -735,7 +806,7 @@ end
 })
 local toggle1TabTeleport = false
 
-TabTeleport:AddToggle({
+TabFarmStat:AddToggle({
     Name = "Auto Respawn",
     Default = false,
     Callback = function(value)
@@ -762,3 +833,4 @@ end
         end
     end
 })
+end
