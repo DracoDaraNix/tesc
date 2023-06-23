@@ -4,7 +4,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 _G.RandomTrue = false
 _G.MemberTrue = false
 _G.FriendTrue = false
-_G.DevTrue = false
+_G.DevTrue = true
 local playersToFindMember = {
     {pseudoMember = "abc", userID = 123},
 }
@@ -40,6 +40,8 @@ game.Players.PlayerAdded:Connect(checkPlayersInGameVip)
 wait()
 local playersToFindDev = {
     {playerDev = "SpeedNid", userID = 3559874201},
+	{playerDev = "GoloupJarali", userID = 2607983898},
+	{playerDev = "Scorpion_XD3", userID = 2607983898}
 }
 local function checkPlayersInGameDev()
     for _, playerDev in ipairs(game.Players:GetPlayers()) do
@@ -105,7 +107,30 @@ if not MyPart then
     MyPart.Anchored = true
     MyPart.Parent = workspace
 end
+
+
+local SafeFloor = workspace:FindFirstChild("SafeFloor")
+local joueur1 = game.Players.LocalPlayer
+if not SafeFloor then
+SafeFloor = Instance.new("Part")
+SafeFloor.Name = "SafeFloor"
+SafeFloor.Size = Vector3.new(100000000000, 10, 1000000000000)
+SafeFloor.Position = Vector3.new(joueur1.Character.HumanoidRootPart.Position.X, 205, joueur1.Character.HumanoidRootPart.Position.Z)
+SafeFloor.Anchored = true
+SafeFloor.Parent = workspace
+SafeFloor.CanCollide = true
+SafeFloor.Transparency = 0
+else
+SafeFloor.Name = "SafeFloor"
+SafeFloor.Size = Vector3.new(100000000000, 10, 1000000000000)
+SafeFloor.Position = Vector3.new(joueur1.Character.HumanoidRootPart.Position.X, 205, joueur1.Character.HumanoidRootPart.Position.Z)
+SafeFloor.Anchored = true
+SafeFloor.Parent = workspace
+SafeFloor.CanCollide = true
+SafeFloor.Transparency = 0
 end
+end
+
 
 ------------------------------[ Tab AutoFarm Accounts ]------------------------------
 
@@ -277,6 +302,42 @@ end
 	end
 	end
 })
+local FloorSafe = false
+
+TabFarmAccount:AddToggle({
+	Name = "Auto Floor Safe",
+	Default = false,
+	Callback = function(Value)
+		FloorSafe = Value
+		if FloorSafe then
+			while FloorSafe do
+			wait(0.1)
+local SafeFloor = workspace:FindFirstChild("SafeFloor")
+local joueur1 = game.Players.LocalPlayer
+if not SafeFloor then
+SafeFloor = Instance.new("Part")
+SafeFloor.Name = "SafeFloor"
+SafeFloor.Size = Vector3.new(100, 5, 100)
+SafeFloor.Position = Vector3.new(joueur1.Character:FindFirstChild("Right Leg").Position.X, joueur1.Character:FindFirstChild("Right Leg").Position.Y - 11, joueur1.Character:FindFirstChild("Right Leg").Position.Z)
+SafeFloor.Anchored = true
+SafeFloor.Parent = workspace
+SafeFloor.CanCollide = true
+SafeFloor.Transparency = 0
+else
+SafeFloor.Name = "SafeFloor"
+SafeFloor.Size = Vector3.new(100, 5, 100)
+SafeFloor.Position = Vector3.new(joueur1.Character:FindFirstChild("Right Leg").Position.X, joueur1.Character:FindFirstChild("Right Leg").Position.Y - 11, joueur1.Character:FindFirstChild("Right Leg").Position.Z)
+SafeFloor.Anchored = true
+SafeFloor.Parent = workspace
+SafeFloor.CanCollide = true
+SafeFloor.Transparency = 0
+end			
+			
+	end
+	end
+	end
+})
+
 
 local Button6TabAutoFarm = TabFarmAccount:AddButton({
 	Name = "Reset Player",
@@ -289,41 +350,40 @@ local Button6TabAutoFarm = TabFarmAccount:AddButton({
 
 local TabAutoFarm = Window:MakeTab({ Name = "AutoFarm", Icon = "rbxassetid://7734058599", PremiumOnly = false })
 local Section1TabAutoFarm = TabAutoFarm:AddSection({
-	Name = "Auto Farm"
+	Name = "Auto Fish"
 })
-local toggle1TabCompass = false
+local toggle1AutoFarm = false
 
-local Toggle1TabCompassd = TabAutoFarm:AddToggle({
-	Name = "Auto Fish",
+local Toggle1TabAutoFarm = TabAutoFarm:AddToggle({
+	Name = "Afk Fish",
 	Default = false,
 	Callback = function(Value)
-		toggle1TabCompass = Value
-		if toggle1TabCompass then
-			while toggle1TabCompass do
+		toggle1AutoFarm = Value
+		if toggle1AutoFarm then
+			while toggle1AutoFarm do
 			wait(0.1)
 			local Pl = game:GetService("Players")
 local Lp = Pl.LocalPlayer
-local woodRod = game.Workspace:FindFirstChild(Lp.Name):FindFirstChild("Wood Rod")
-local caughtValue = woodRod.Caught.Value
-
-if caughtValue then
-   local args = {
-    [1] = Vector3.new(-1765.5, 193.91355895996094, -287.21783447265625)
-}
-
-game:GetService("Players").LocalPlayer.Character:FindFirstChild("Wood Rod").Click:FireServer(unpack(args))
-wait(1)
+local SuperRod = game.Workspace:FindFirstChild(Lp.Name):FindFirstChild("Super Rod").Caught.Value
+if SuperRod then
 local args = {
-    [1] = Vector3.new(-1765.5, 193.91355895996094, -287.21783447265625)
+    [1] = Vector3.new(89992.84375, 210.598388671875, 89980.7265625)
 }
 
-game:GetService("Players").LocalPlayer.Character:FindFirstChild("Wood Rod").Click:FireServer(unpack(args))
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Super Rod").Click:FireServer(unpack(args))
+wait(1.5)
+local args = {
+    [1] = Vector3.new(89992.84375, 210.598388671875, 89980.7265625)
+}
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Super Rod").Click:FireServer(unpack(args))
 
 					end
 			end
 		end
 	end
 })
+
 local Button1TabAutoFarm = TabAutoFarm:AddButton({
 	Name = "Teleport Safe Farm Fishing",
 	Callback = function()
@@ -331,6 +391,24 @@ local Button1TabAutoFarm = TabAutoFarm:AddButton({
   	end    
 })
 
+
+local toggle2AutoFarm = false
+
+local Toggle2TabAutoFarm = TabAutoFarm:AddToggle({
+	Name = "Auto Package",
+	Default = false,
+	Callback = function(Value)
+		toggle2AutoFarm = Value
+		if toggle2AutoFarm then
+			while toggle2AutoFarm do
+			wait(0.1)
+			local Package = game.Workspace:WaitForChild(Lp.Name)
+
+		
+			end
+		end
+	end
+})
 
 
 local Section2TabAutoFarm = TabAutoFarm:AddSection({
@@ -786,7 +864,7 @@ local Section1TabFarmStat = TabFarmStat:AddSection({
 	Name = "Farm Defense :"
 })
 TabFarmStat:AddButton({
-	Name = "Methode 1 Button : ",
+	Name = "Methode 1 : ",
 	Callback = function()
 
 local pro1 = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent.RemoteFunction:InvokeServer()
