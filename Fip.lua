@@ -294,7 +294,7 @@ wait()
 else
 wait(3)
 firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)
-wait(10)
+wait(15)
 game.Players.LocalPlayer.Character:BreakJoints()
 wait(7)
 end
