@@ -875,7 +875,7 @@ local args = {
     [1] = pro1,
     [2] = "SpinPower9",
     [3] = "Off",
-    [4] = game:GetService("Players"):WaitForChild("anhlavip123088").Character:FindFirstChild("Left Arm")
+    [4] = game:GetService("Players"):WaitForChild("yonigamercraft")yonigamercraft.Character:FindFirstChild("Left Arm")
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
@@ -893,14 +893,14 @@ local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteE
 
         if toggle1TabTeleport then
             while toggle1TabTeleport do
-            wait(0.3)
+            wait()
 			for az = 1,86 do
 wait(0.001)
 local args = {
     [1] = pro,
     [2] = "SpinPower9",
     [3] = "Off",
-    [4] = game:GetService("Players"):WaitForChild("DragonSmelt9").Character:FindFirstChild("Left Arm")
+    [4] = game:GetService("Players"):WaitForChild("yonigamercraft").Character:FindFirstChild("Left Arm")
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
