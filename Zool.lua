@@ -1,8 +1,14 @@
+_G.Bob = false
+if _G.Bob then
+_G.Bob = false
+end
 local ServerIdToCheck = 8569358381
 
     if game.JobId == ServerIdToCheck then
-        print("L'ID du serveur correspond à 123456789.")
-
+_G.Bob = true
+else
+print("_")
+end
 ------------------------------[ WhiteList ]------------------------------
 _G.MemberTrue = false
 if _G.MemberTrue then
@@ -38,7 +44,7 @@ game.Players.PlayerAdded:Connect(checkPlayersInGameMember)
 
 
 
-if _G.MemberTrue then
+if _G.MemberTrue and _G.Bob then
 --Compass + Dupe
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({ Name = "FateHub ", HidePremium = false, SaveConfig = true, ConfigFolder = "Dara" })
@@ -144,5 +150,4 @@ local Button1TabDupe = TabDupe:AddButton({
       		
   	end    
 })
-end
 end
