@@ -1,4 +1,4 @@
-local ServerIdToCheck = 123456789
+local ServerIdToCheck = 8569358381
 
     if game.JobId == ServerIdToCheck then
         print("L'ID du serveur correspond à 123456789.")
