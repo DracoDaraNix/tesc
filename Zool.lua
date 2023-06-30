@@ -4,7 +4,7 @@ _G.Bob = false
 end
 local ServerIdToCheck = 8569358381
 
-    if game.JobId == ServerIdToCheck then
+    if game.PlaceId == ServerIdToCheck then
 _G.Bob = true
 else
 print("_")
