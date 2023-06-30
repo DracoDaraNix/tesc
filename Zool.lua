@@ -1,3 +1,7 @@
+local ServerIdToCheck = 123456789
+
+    if game.JobId == ServerIdToCheck then
+        print("L'ID du serveur correspond à 123456789.")
 
 ------------------------------[ WhiteList ]------------------------------
 _G.MemberTrue = false
@@ -140,4 +144,5 @@ local Button1TabDupe = TabDupe:AddButton({
       		
   	end    
 })
+end
 end
