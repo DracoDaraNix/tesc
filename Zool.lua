@@ -346,7 +346,7 @@ TabLight:AddButton({
 TabLight:AddButton({
 	Name = "teleport Part Light",
 	Callback = function()
-      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 5005, -54)
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 2005, -54)
 
   	end    
 })
@@ -364,7 +364,7 @@ local dsi = TabLight:AddToggle({
             wait(0.5)
 				_G.Light = true
 local pro = game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent.RemoteFunction:InvokeServer()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 5010, -54)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 2010, -54)
     wait(0.5)
     local args = {
     [1] = pro,
