@@ -330,7 +330,7 @@ TabLight:AddButton({
       		local CharacterName = game.Players.LocalPlayer.Character
     local position = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15)
     local char = game.Players.LocalPlayer.Character.HumanoidRootPart
-    char.CFrame = CFrame.new(-169, 5010, -54)
+    char.CFrame = CFrame.new(-169, 3010, -54)
 
     local b1 = Instance.new("Part")
     b1.Shape = "Block"
@@ -338,7 +338,7 @@ TabLight:AddButton({
     b1.BrickColor = BrickColor.new("Hot Pink")
     b1.Anchored = true
     b1.Parent = game.Workspace
-    b1.CFrame = CFrame.new(-169, 5000, -54)
+    b1.CFrame = CFrame.new(-169, 3000, -54)
     b1.Size = Vector3.new(50, 0.1, 50)
   	end    
 })
