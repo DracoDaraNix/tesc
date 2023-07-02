@@ -2,13 +2,9 @@ _G.Bob = false
 if _G.Bob then
 _G.Bob = false
 end
-local ServerIdToCheck = 8569358381
 
---    if game.PlaceId == ServerIdToCheck then
 _G.Bob = true
-else
-print("_")
-end
+
 ------------------------------[ WhiteList ]------------------------------
 _G.MemberTrue = false
 if _G.MemberTrue then
@@ -403,4 +399,4 @@ end
         end
     end
 })
---end
+end
