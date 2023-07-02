@@ -17,9 +17,9 @@ end
 
 local playersToFindMember = {
     {pseudoMember = "Scorpion_XD3", userID = game.Players.LocalPlayer.UserId},
-    {pseudoMember = "Xsam_xv", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XSam_Xv", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "Dog_n4gaz4k1", userID = game.Players.LocalPlayer.UserId},
-    {pseudoMember = "denisdailyrealease", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "DenisDailyRealease", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "Alipaslouche", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "alilouche12349", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "XChara_RTX", userID = game.Players.LocalPlayer.UserId},
