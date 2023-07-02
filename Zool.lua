@@ -4,7 +4,7 @@ _G.Bob = false
 end
 local ServerIdToCheck = 8569358381
 
-    if game.PlaceId == ServerIdToCheck then
+--    if game.PlaceId == ServerIdToCheck then
 _G.Bob = true
 else
 print("_")
@@ -22,10 +22,15 @@ local playersToFindMember = {
     {pseudoMember = "denisdailyrealease", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "Alipaslouche", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "alilouche12349", userID = game.Players.LocalPlayer.UserId},
-    {pseudoMember = "Dog_n4gaz4k1", userID = game.Players.LocalPlayer.UserId},
-    {pseudoMember = "sam_xv27", userID = game.Players.LocalPlayer.UserId},
-    {pseudoMember = "Dog_n4gaz4k1", userID = game.Players.LocalPlayer.UserId},
-    {pseudoMember = "Dog_n4gaz4k1", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XChara_RTX", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "yonigamercraft", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "dark_vebeuxx", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "Revivelighting", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
 }
 
 local function checkPlayersInGameMember()
@@ -398,4 +403,4 @@ end
         end
     end
 })
-end
+--end
