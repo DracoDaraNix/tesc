@@ -1,3 +1,4 @@
+-- Anti Bypass
 _G.Bob = false
 if _G.Bob then
 _G.Bob = false
@@ -23,7 +24,7 @@ local playersToFindMember = {
     {pseudoMember = "dark_vebeuxx", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "Revivelighting", userID = game.Players.LocalPlayer.UserId},
-	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "lesCousins3", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
@@ -44,9 +45,8 @@ game.Players.PlayerAdded:Connect(checkPlayersInGameMember)
 
 
 
-
+-- Script
 if _G.MemberTrue and _G.Bob then
---Compass + Dupe
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({ Name = "FateHub ", HidePremium = false, SaveConfig = true, ConfigFolder = "Dara" })
 
@@ -318,7 +318,7 @@ local function UpdateLabels()
 end
 
 spawn(UpdateLabels)
-local TabLight = Window:MakeTab({ Name = "Light", Icon = "rbxassetid://7733774602", PremiumOnly = false })
+local TabLight = Window:MakeTab({ Name = "Spam  Fruit", Icon = "rbxassetid://7733774602", PremiumOnly = false })
 
 local Section1TabLight = TabLight:AddSection({
 	Name = "Auto Light"
@@ -354,7 +354,7 @@ TabLight:AddButton({
 
 local toggle1TabAutoFarmFruit = false
 
-local dsi = TabLight:AddToggle({
+local ToggleLight = TabLight:AddToggle({
     Name = "AutoFarm light",
     Default = false,
     Callback = function(value)
@@ -364,11 +364,11 @@ local dsi = TabLight:AddToggle({
             while toggle1TabAutoFarmFruit do
             wait(0.5)
 				_G.Light = true
-local pro = game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent.RemoteFunction:InvokeServer()
+local pro1 = game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent.RemoteFunction:InvokeServer()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 2010, -54)
     wait(0.5)
     local args = {
-    [1] = pro,
+    [1] = pro1,
     [2] = "LightPower8",
     [3] = "StartCharging",
     [4] = game.Players.LocalPlayer.Character.Torso.CFrame,
@@ -381,7 +381,7 @@ while _G.Light do
 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
   if v:IsA("Model") then 
     local args = {
-    [1] = pro,
+    [1] = pro1,
     [2] = "LightPower8",
     [3] = "StopCharging",
     [4] = workspace.Enemies:FindFirstChild(v.name).Torso.CFrame,
@@ -399,4 +399,53 @@ end
         end
     end
 })
+local Section1TabLight = TabLight:AddSection({
+	Name = "Auto Rumble"
+})
+
+local toggle2TabAutoFarmFruit = false
+
+local ToggleRumble = TabLight:AddToggle({
+    Name = "AutoFarm Rumble",
+    Default = false,
+    Callback = function(value)
+        toggle2TabAutoFarmFruit = value
+        
+        if toggle2TabAutoFarmFruit then
+            while toggle2TabAutoFarmFruit do
+            wait()
+				_G.Rumble = true
+local pro2 = game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent.RemoteFunction:InvokeServer()
+    wait()
+    local args = {
+    [1] = pro2,
+    [2] = "RumblePower9",
+    [3] = "StartCharging",
+    [4] = game.Players.LocalPlayer.Character.Torso.CFrame,
+    [5] = workspace.IslandWindmill.Path,
+    [6] = 100 }
+game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
+
+
+for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+  if v:IsA("Model") then 
+    local args = {
+    [1] = pro2,
+    [2] = "RumblePower9",
+    [3] = "StopCharging",
+    [4] = workspace.Enemies:FindFirstChild(v.name).Torso.CFrame,
+    [5] = workspace.IslandWindmill.Path,
+    [6] = 100 } 
+game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
+wait(0.00000000000000000000000000000000000000000000000000000000001)
+end
+end
+            end
+            
+        else
+		 _G.Rumble = false
+        end
+    end
+})
+
 end
