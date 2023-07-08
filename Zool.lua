@@ -148,7 +148,7 @@ local TabDupe = Window:MakeTab({ Name = "Dupe", Icon = "rbxassetid://7733924216"
 local Button1TabDupe = TabDupe:AddButton({
 	Name = "Zone Dupe",
 	Callback = function()
-      		game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1267.76355, 412.999908, 11084.3154))
+      		game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
   	end    
 })
 
@@ -156,7 +156,7 @@ local Button2TabDupe = TabDupe:AddButton({
 	Name = "Dupe",
 	Callback = function()
       		local plr = game.Players.LocalPlayer
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1267.76355, 412.999908, 11084.3154))
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
 repeat task.wait()
 until plr.Backpack:FindFirstChild("Compass")
