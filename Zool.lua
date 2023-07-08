@@ -151,6 +151,7 @@ local Button1TabDupe = TabDupe:AddButton({
       		game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1267.76355, 412.999908, 11084.3154))
   	end    
 })
+
 local Button2TabDupe = TabDupe:AddButton({
 	Name = "Dupe",
 	Callback = function()
@@ -176,6 +177,43 @@ repeat task.wait()
 until compass.Parent == workspace
 game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+  	end    
+})
+
+local SectionChallenge = TabDupe:AddSection({
+	Name = "x5 Challenge Compass"
+})
+
+TabDupe:AddButton({
+	Name = "x5 Challenge",
+	Callback = function()
+	
+for q = 1,5 do
+wait()
+        pcall(function()
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(1);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
+		wait()
+		end
+local args = {
+    [1] = "Claim",
+    [2] = "Weekly3"
+}
+
+workspace:WaitForChild("UserData"):WaitForChild("User_" ..game.Players.LocalPlayer.UserId):WaitForChild("ChallengesRemote"):FireServer(unpack(args))
+wait()
+workspace:WaitForChild("UserData"):WaitForChild("User_" ..game.Players.LocalPlayer.UserId):WaitForChild("Stats"):FireServer()
+
   	end    
 })
 ------------------------------[ Tab InfoPlayers ]------------------------------
