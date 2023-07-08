@@ -156,6 +156,7 @@ local Button2TabDupe = TabDupe:AddButton({
 	Name = "Dupe",
 	Callback = function()
       		local plr = game.Players.LocalPlayer
+workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
 repeat task.wait()
