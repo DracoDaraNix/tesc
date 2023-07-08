@@ -26,7 +26,7 @@ local playersToFindMember = {
 	{pseudoMember = "Revivelighting", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "lesCousins3", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "XoMyaK_2006", userID = game.Players.LocalPlayer.UserId},
-	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+	{pseudoMember = "BulletDuglassD", userID = game.Players.LocalPlayer.UserId},
 	{pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
 }
 
