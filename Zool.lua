@@ -189,9 +189,9 @@ TabDupe:AddButton({
 	Name = "x5 Challenge",
 	Callback = function()
 	
-for q = 1,5 do
+repeat 
 wait()
-        pcall(function()
+pcall(function()
             local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
             local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
             if Compass or Compass2 then
@@ -204,8 +204,8 @@ wait()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
-		wait()
-		end
+until workspace:WaitForChild("UserData"):WaitForChild("User_" ..game.Players.LocalPlayer.UserId).Data:WaitForChild("QQ_Weekly3").Value == 5
+
 local args = {
     [1] = "Claim",
     [2] = "Weekly3"
