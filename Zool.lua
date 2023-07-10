@@ -200,7 +200,7 @@ pcall(function()
                 Compass.Parent = game.Players.LocalPlayer.Character;
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
                 Compass:Activate();
-                wait(0.3);
+                wait(0.4);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
