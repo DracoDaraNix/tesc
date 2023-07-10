@@ -80,7 +80,7 @@ local args = {
 
 workspace:WaitForChild("Merchants"):WaitForChild("QuestMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
 end
-wait(1)
+wait(0.3)
 			end
 		end
 	end
@@ -106,7 +106,7 @@ TabCompass:AddToggle({
                 Compass.Parent = game.Players.LocalPlayer.Character;
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
                 Compass:Activate();
-                wait(1);
+                wait(0.3);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
@@ -200,7 +200,7 @@ wait()
                 Compass.Parent = game.Players.LocalPlayer.Character;
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
                 Compass:Activate();
-                wait(1);
+                wait(0.3);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
