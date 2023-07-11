@@ -14,21 +14,21 @@ end
 
 local playersToFindMember = {
     {pseudoMember = "Scorpion_XD3", userID = game.Players.LocalPlayer.UserId},
---    {pseudoMember = "XSam_Xv", userID = game.Players.LocalPlayer.UserId},
-  --  {pseudoMember = "Dog_n4gaz4k1", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XSam_Xv", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "Dog_n4gaz4k1", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "DenisDailyRealease", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "Alipaslouche", userID = game.Players.LocalPlayer.UserId},
     {pseudoMember = "alilouche12349", userID = game.Players.LocalPlayer.UserId},
-   -- {pseudoMember = "XChara_RTX", userID = game.Players.LocalPlayer.UserId},
-   -- {pseudoMember = "yonigamercraft", userID = game.Players.LocalPlayer.UserId},
-   -- {pseudoMember = "dark_vebeuxx", userID = game.Players.LocalPlayer.UserId},
-   -- {pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
---	{pseudoMember = "Revivelighting", userID = game.Players.LocalPlayer.UserId},
-	{pseudoMember = "lesCousins3", userID = game.Players.LocalPlayer.UserId},
-	{pseudoMember = "XoMyaK_2006", userID = game.Players.LocalPlayer.UserId},
-	{pseudoMember = "BulletDuglassD", userID = game.Players.LocalPlayer.UserId},
-		{pseudoMember = "tro2890", userID = game.Players.LocalPlayer.UserId},
---	{pseudoMember = "fireblue57", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XChara_RTX", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "yonigamercraft", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "dark_vebeuxx", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XNika_RTX", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "Revivelighting", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "lesCousins3", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "XoMyaK_2006", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "BulletDuglassD", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "tro2890", userID = game.Players.LocalPlayer.UserId},
+    {pseudoMember = "fireblue57", userID = game.Players.LocalPlayer.UserId},
 }
 
 local function checkPlayersInGameMember()
