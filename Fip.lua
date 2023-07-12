@@ -44,7 +44,7 @@ end
 checkPlayersInGameDev()
 game.Players.PlayerAdded:Connect(checkPlayersInGameDev)
 wait(0.2)
-if not _G.MemberTrue and not _G.DevTrue then
+if not _G.MemberTrue or not _G.DevTrue then
 _G.RandomTrue = true
 print("POOR")
 end
