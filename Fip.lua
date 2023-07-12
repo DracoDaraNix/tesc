@@ -510,10 +510,13 @@ local CrashTab = Window:MakeTab({
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
+local Section1CrashTab = CrashTab:AddSection({
+	Name = "Crash Quake :"
+})
 local toggle1CrashTab1 = false
 
 local Toggle1CrashTab = CrashTab:AddToggle({
-	Name = "Auto Package",
+	Name = "Spam Quake",
 	Default = false,
 	Callback = function(Value)
 		toggle1CrashTab1 = Value
