@@ -49,15 +49,8 @@ _G.RandomTrue = true
 print("POOR")
 end
 
-local fd 
 
-if _G.MemberTrue then
-    fd = "[Version : Member]"
-elseif _G.DevTrue then
-    fd = "[Version : Dev]"
-end
-
-local Window = OrionLib:MakeWindow({ Name = "FateHub " .. fd, HidePremium = false, SaveConfig = true, ConfigFolder = "Dara" })
+local Window = OrionLib:MakeWindow({ Name = "FateHub ", HidePremium = false, SaveConfig = true, ConfigFolder = "Dara" })
 
 
 ------------------------------[ Parts ]------------------------------
