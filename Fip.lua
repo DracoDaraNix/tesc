@@ -1,10 +1,10 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 ------------------------------[ WhiteList ]------------------------------
-_G.RandomTrue = false
-_G.MemberTrue = false
-_G.FriendTrue = false
+
 _G.DevTrue = true
+
+
 local playersToFindMember = {
     {pseudoMember = "abc", userID = 123},
 }
@@ -22,22 +22,7 @@ end
 checkPlayersInGameMember()
 game.Players.PlayerAdded:Connect(checkPlayersInGameMember)
 wait()
-local playersToFindVip = {
-    {pseudoVip = "abc", userID = 123},
-}
-local function checkPlayersInGameVip()
-    for _, playerMember in ipairs(game.Players:GetPlayers()) do
-        for _, playerInfoMember in ipairs(playersToFindVip) do
-            if playerMember.UserId == playerInfoMember.userID and playerMember.Name == playerInfoMember.pseudoVip then
-                _G.FriendTrue = true
-                break
-            end
-        end
-    end
-end
-checkPlayersInGameVip()
-game.Players.PlayerAdded:Connect(checkPlayersInGameVip)
-wait()
+
 local playersToFindDev = {
     {playerDev = "SpeedNid", userID = 3559874201},
 	{playerDev = "GoloupJarali", userID = 2607983898},
@@ -56,7 +41,7 @@ end
 checkPlayersInGameDev()
 game.Players.PlayerAdded:Connect(checkPlayersInGameDev)
 wait(0.2)
-if not _G.MemberTrue and not _G.FriendTrue and not _G.DevTrue then
+if not _G.MemberTrue and not _G.DevTrue then
 _G.RandomTrue = true
 print("POOR")
 end
@@ -65,8 +50,6 @@ local fd
 
 if _G.MemberTrue then
     fd = "[Version : Member]"
-elseif _G.FriendTrue then
-    fd = "[Version : Friend]"
 elseif _G.DevTrue then
     fd = "[Version : Dev]"
 end
@@ -77,7 +60,7 @@ local Window = OrionLib:MakeWindow({ Name = "FateHub " .. fd, HidePremium = fals
 ------------------------------[ Parts ]------------------------------
 
 
-if _G.DevTrue or _G.FriendTrue then
+if _G.DevTrue then
 local FishFarmPart = workspace:FindFirstChild("FishFarm")
 if not FishFarmPart then
     FishFarmPart = Instance.new("Part")
@@ -294,7 +277,7 @@ wait()
 else
 wait(3)
 firesignal(game.Players.LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)
-wait(15)
+wait(5)
 game.Players.LocalPlayer.Character:BreakJoints()
 wait(7)
 end
@@ -317,16 +300,16 @@ local joueur1 = game.Players.LocalPlayer
 if not SafeFloor then
 SafeFloor = Instance.new("Part")
 SafeFloor.Name = "SafeFloor"
-SafeFloor.Size = Vector3.new(100, 5, 100)
-SafeFloor.Position = Vector3.new(joueur1.Character:FindFirstChild("Right Leg").Position.X, joueur1.Character:FindFirstChild("Right Leg").Position.Y - 11, joueur1.Character:FindFirstChild("Right Leg").Position.Z)
+SafeFloor.Size = Vector3.new(100000000000, 10, 1000000000000)
+SafeFloor.Position = Vector3.new(joueur1.Character.HumanoidRootPart.Position.X, 205, joueur1.Character.HumanoidRootPart.Position.Z)
 SafeFloor.Anchored = true
 SafeFloor.Parent = workspace
 SafeFloor.CanCollide = true
 SafeFloor.Transparency = 0
 else
 SafeFloor.Name = "SafeFloor"
-SafeFloor.Size = Vector3.new(100, 5, 100)
-SafeFloor.Position = Vector3.new(joueur1.Character:FindFirstChild("Right Leg").Position.X, joueur1.Character:FindFirstChild("Right Leg").Position.Y - 11, joueur1.Character:FindFirstChild("Right Leg").Position.Z)
+SafeFloor.Size = Vector3.new(100000000000, 10, 1000000000000)
+SafeFloor.Position = Vector3.new(joueur1.Character.HumanoidRootPart.Position.X, 205, joueur1.Character.HumanoidRootPart.Position.Z)
 SafeFloor.Anchored = true
 SafeFloor.Parent = workspace
 SafeFloor.CanCollide = true
@@ -415,6 +398,19 @@ local Section2TabAutoFarm = TabAutoFarm:AddSection({
 	Name = "Auto Haki"
 })
 
+local Button2TabAutoFarm = TabAutoFarm:AddButton({
+	Name = "Haki Farm Button",
+	Callback = function()
+      		repeat wait()
+		spawn(function()
+		workspace.UserData["User_"..game.Players.LocalPlayer.UserId].III:FireServer("On", 1)
+		wait()
+		workspace.UserData["User_"..game.Players.LocalPlayer.UserId].III:FireServer("Off", 1)
+		end)
+		until game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("HealthBar").Frame.Haki.Frame.Min.Value <= 100 
+
+  	end    
+})
 
 ------------------------------[ Tab AutoFarm Fruit ]------------------------------
 
@@ -426,9 +422,11 @@ local TabAutoFarmFruit = Window:MakeTab({
 	PremiumOnly = false
 })
 
-
+local Section1TabAutoFarmFruit = TabAutoFarmFruit:AddSection({
+	Name = "Auto Light"
+})
 TabAutoFarmFruit:AddButton({
-	Name = "Teleport Zone Farm Air",
+	Name = "Zone Farm Light",
 	Callback = function()
       		local CharacterName = game.Players.LocalPlayer.Character
     local position = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15)
@@ -447,7 +445,7 @@ TabAutoFarmFruit:AddButton({
 })
 
 TabAutoFarmFruit:AddButton({
-	Name = "teleport Part Light",
+	Name = "Teleport Zone Light",
 	Callback = function()
       		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-169, 5005, -54)
 
@@ -501,12 +499,75 @@ end
         end
     end
 })
+local Section2TabAutoFarmFruit = TabAutoFarmFruit:AddSection({
+	Name = "Auto Quake"
+})
 end
+------------------------------[ Tab Crash ]------------------------------
+
+local CrashTab = Window:MakeTab({
+    Name = "Void",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local toggle1CrashTab1 = false
+
+local Toggle1CrashTab = CrashTab:AddToggle({
+	Name = "Auto Package",
+	Default = false,
+	Callback = function(Value)
+		toggle1CrashTab1 = Value
+		if toggle1CrashTab1 then
+			while toggle1CrashTab1 do
+			wait(0.1)
+local pro = game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent.RemoteFunction:InvokeServer()
+
+local args = {
+    [1] = pro,
+    [2] = "QuakePower1",
+    [3] = "StopCharging",
+    [4] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Base"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [5] = CFrame.new(55.0346298, 221, -41.9270401, -0.83373338, 0.104112662, -0.542262971, -7.45057971e-09, 0.982063055, 0.188552827, 0.552167118, 0.15720278, -0.818778872),
+    [6] = 100,
+    [7] = Vector3.new(33.16106033325195, 224.74984741210938, -82.38896179199219)
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))			
+local pro = game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent.RemoteFunction:InvokeServer()
+
+local args = {
+    [1] = pro,
+    [2] = "QuakePower1",
+    [3] = "StopCharging",
+    [4] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Base"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [5] = CFrame.new(55.0346298, 221, -41.9270401, -0.83373338, 0.104112662, -0.542262971, -7.45057971e-09, 0.982063055, 0.188552827, 0.552167118, 0.15720278, -0.818778872),
+    [6] = 100,
+    [7] = Vector3.new(33.16106033325195, 224.74984741210938, -82.38896179199219)
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+local pro = game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent.RemoteFunction:InvokeServer()
+
+local args = {
+    [1] = pro,
+    [2] = "QuakePower1",
+    [3] = "StopCharging",
+    [4] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Base"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [5] = CFrame.new(55.0346298, 221, -41.9270401, -0.83373338, 0.104112662, -0.542262971, -7.45057971e-09, 0.982063055, 0.188552827, 0.552167118, 0.15720278, -0.818778872),
+    [6] = 100,
+    [7] = Vector3.new(33.16106033325195, 224.74984741210938, -82.38896179199219)
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))		
+			end
+		end
+	end
+})
 
 
 ------------------------------[ Tab Compass ]------------------------------
 
-if _G.DevTrue or _G.FriendTrue then
+if _G.DevTrue then
 local TabCompass = Window:MakeTab({ Name = "Compass", Icon = "rbxassetid://7733924216", PremiumOnly = false })
 
 local Section1TabCompass = TabCompass:AddSection({
@@ -521,7 +582,7 @@ TabCompass:AddToggle({
 		toggle1TabCompass = Value
 		if toggle1TabCompass then
 			while toggle1TabCompass do
-			wait(0.1)
+			wait()
 				local UserID = tostring(game.Players.LocalPlayer.UserId)
 local actuelCompass1 = game.workspace.UserData["User_"..UserID].Data.CompassTokens.Value
 local actuelCompass2 = actuelCompass1
@@ -533,7 +594,7 @@ local args = {
 
 workspace:WaitForChild("Merchants"):WaitForChild("QuestMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
 end
-wait(1)
+wait(0.3)
 			end
 		end
 	end
@@ -559,10 +620,11 @@ TabCompass:AddToggle({
                 Compass.Parent = game.Players.LocalPlayer.Character;
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
                 Compass:Activate();
-                wait(1);
+                wait(0.3);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
+
 
             end
             
@@ -591,6 +653,37 @@ TabCompass:AddToggle({
 		end
 	end
 })
+local Button1TabCompass = TabCompass:AddButton({
+	Name = "Drop Compass",
+	Callback = function()
+	local plr = game.Players.LocalPlayer
+repeat task.wait()
+until plr.Backpack:FindFirstChild("Compass")
+for i,v in pairs(plr.Backpack:GetChildren()) do
+if v.Name == "Compass" then
+v.Parent = plr.Character
+  end
+end
+repeat task.wait()
+until plr.Character:FindFirstChild("Compass")
+local compass = plr.Character:FindFirstChild("Compass")
+for i,v in pairs(plr.Character:GetChildren()) do
+if v.Name == "Compass" then
+v.Parent = workspace
+  end
+end
+repeat task.wait()
+until compass.Parent == workspace
+  	end    
+})
+local Button2TabCompass = TabCompass:AddButton({
+	Name = "x10 Compass",
+	Callback = function()
+		workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+  	end    
+})
+
+
 end
 
 
@@ -600,11 +693,11 @@ if _G.DevTrue then
 local TabDupe = Window:MakeTab({ Name = "Dupe", Icon = "rbxassetid://7733765045", PremiumOnly = false })
 
 local Button1TabDupe = TabDupe:AddButton({
-	Name = "Expertise compass",
+	Name = "x5 Challenge Compass",
 	Callback = function()
-      		for q = 1,5 do
+      		repeat 
 wait()
-        pcall(function()
+pcall(function()
             local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
             local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
             if Compass or Compass2 then
@@ -613,28 +706,28 @@ wait()
                 Compass.Parent = game.Players.LocalPlayer.Character;
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
                 Compass:Activate();
-                wait(1);
+                wait(0.4);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
-		wait()
-		end
+until workspace:WaitForChild("UserData"):WaitForChild("User_" ..game.Players.LocalPlayer.UserId).Data:WaitForChild("QQ_Weekly3").Value == 5
+
 local args = {
     [1] = "Claim",
     [2] = "Weekly3"
 }
 
-workspace:WaitForChild("UserData"):WaitForChild("User_1994812622"):WaitForChild("ChallengesRemote"):FireServer(unpack(args))
+workspace:WaitForChild("UserData"):WaitForChild("User_" ..game.Players.LocalPlayer.UserId):WaitForChild("ChallengesRemote"):FireServer(unpack(args))
 wait()
-workspace:WaitForChild("UserData"):WaitForChild("User_1994812622"):WaitForChild("Stats"):FireServer()
+workspace:WaitForChild("UserData"):WaitForChild("User_" ..game.Players.LocalPlayer.UserId):WaitForChild("Stats"):FireServer()
 
   	end    
 })
 
 local Button2TabDupe = TabDupe:AddButton({
-	Name = "Teleport Zone Compass",
+	Name = "Teleport Zone Dupe",
 	Callback = function()
-      		game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1267.76355, 412.999908, 11084.3154))
+      		game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 
   	end    
 })
@@ -647,12 +740,60 @@ local Button3TabDupe = TabDupe:AddButton({
 
   	end    
 })
+local Button4TabDupe = TabDupe:AddButton({
+	Name = "Dupe",
+	Callback = function()
+      		      		local plr = game.Players.LocalPlayer
+workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+wait()
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+wait(1)
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+wait(1)
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+wait(1)
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+wait(1)
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+wait(1)
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+
+repeat task.wait()
+until plr.Backpack:FindFirstChild("Compass")
+for i,v in pairs(plr.Backpack:GetChildren()) do
+if v.Name == "Compass" then
+v.Parent = plr.Character
+  end
+end
+repeat task.wait()
+until plr.Character:FindFirstChild("Compass")
+local compass = plr.Character:FindFirstChild("Compass")
+for i,v in pairs(plr.Character:GetChildren()) do
+if v.Name == "Compass" then
+v.Parent = workspace
+  end
+end
+repeat task.wait()
+until compass.Parent == workspace
+game.Players.LocalPlayer:Kick()
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+
+  	end    
+})
+local Button3TabDupe = TabDupe:AddButton({
+	Name = "Freeze Data",
+	Callback = function()
+      		workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+
+  	end    
+})
 end
 
 
 ------------------------------[ Tab InfoPlayers ]------------------------------
 
-if _G.DevTrue or _G.FriendTrue then
+if _G.DevTrue then
 local TabInfoPlayers = Window:MakeTab({ Name = "Info Players", Icon = "rbxassetid://7733774602", PremiumOnly = false })
 local Section1TabInfoPlayers = TabInfoPlayers:AddSection({
 	Name = "Information Players"
@@ -795,7 +936,7 @@ end
 
 ------------------------------[ Tab Teleport ]------------------------------
 
-if _G.DevTrue or _G.FriendTrue then
+if _G.DevTrue then
 local TabFarmStat = Window:MakeTab({ Name = "Teleport", Icon = "rbxassetid://7743869517", PremiumOnly = false })
 local Section1TabFarmStat = TabFarmStat:AddSection({
 	Name = "Teleport"
@@ -875,7 +1016,7 @@ local args = {
     [1] = pro1,
     [2] = "SpinPower9",
     [3] = "Off",
-    [4] = game:GetService("Players"):WaitForChild("yonigamercraft")yonigamercraft.Character:FindFirstChild("Left Arm")
+    [4] = game:GetService("Players"):WaitForChild("anhlavip123088").Character:FindFirstChild("Left Arm")
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
@@ -893,14 +1034,14 @@ local pro = game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteE
 
         if toggle1TabTeleport then
             while toggle1TabTeleport do
-            wait()
+            wait(0.3)
 			for az = 1,86 do
 wait(0.001)
 local args = {
     [1] = pro,
     [2] = "SpinPower9",
     [3] = "Off",
-    [4] = game:GetService("Players"):WaitForChild("yonigamercraft").Character:FindFirstChild("Left Arm")
+    [4] = game:GetService("Players"):WaitForChild("DragonSmelt9").Character:FindFirstChild("Left Arm")
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Spin.RemoteEvent:FireServer(unpack(args))
