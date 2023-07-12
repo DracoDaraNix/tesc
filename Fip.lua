@@ -1,9 +1,11 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 ------------------------------[ WhiteList ]------------------------------
-
-_G.DevTrue = true
-
+if _G.MemberTrue or _G.DevTrue then
+_G.MemberTrue = false
+_G.DevTrue = false
+_G.RandomTrue = true
+end
 
 local playersToFindMember = {
     {pseudoMember = "abc", userID = 123},
@@ -26,7 +28,8 @@ wait()
 local playersToFindDev = {
     {playerDev = "SpeedNid", userID = 3559874201},
 	{playerDev = "GoloupJarali", userID = 2607983898},
-	{playerDev = "Scorpion_XD3", userID = 2607983898}
+	{playerDev = "Scorpion_XD3", userID = 2607983898},
+	{playerDev = "BulletDuglassD", userID = 4654915007}
 }
 local function checkPlayersInGameDev()
     for _, playerDev in ipairs(game.Players:GetPlayers()) do
