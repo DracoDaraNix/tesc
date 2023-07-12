@@ -28,7 +28,7 @@ wait()
 local playersToFindDev = {
     {playerDev = "SpeedNid", userID = 3559874201},
 	{playerDev = "GoloupJarali", userID = 2607983898},
-	{playerDev = "Scorpion_XD3", userID = 1298628611},
+	{playerDev = "Scorpion_XD3", userID = 298628611},
 	{playerDev = "BulletDuglassD", userID = 4654915007}
 }
 local function checkPlayersInGameDev()
